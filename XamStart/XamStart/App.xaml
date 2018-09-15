@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:locator="clr-namespace:XamStart.Helpers"
+             x:Class="XamStart.App">
+	<Application.Resources>
+        <ResourceDictionary>
+            <locator:ViewModelLocator x:Key="Locator"/>
+            <Color x:Key="BlueLink">#007aff</Color>
+            <Color x:Key="PleaseWaitBackgroundColor">#496275</Color>
+            <Style x:Key="PleaseWaitLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Grid.Row" Value="1" />
+                <Setter Property="Text" Value="Please wait..." />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamStart.Views.HelpPage"
+             xmlns:views="clr-namespace:XamStart.Views"
+             Padding="15,0,15,0"
+             BindingContext="{Binding HelpPageViewModel, Source={StaticResource Locator}}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Label FontAttributes="Bold"  Grid.Row="0" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1" >
+                <Label Text="Application Name:"></Label>
+                <Label Text="{Binding AppName}"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" >
+                <Label Text="Version:"></Label>
+                <Label Text="{Binding Version}"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3">
+                <Label Text="Version History" TextColor="{StaticResource BlueLink}"></Label>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AppDetailsCommand}" />
+                </Label.GestureRecognizers>
+
+            </StackLayout>
+            <Grid Grid.Row="4">
+                <BoxView   
+                                Margin="0,20"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                WidthRequest="40"
+                                HeightRequest="1"  
+                                Color="#5b5d68"></BoxView>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="5" >
+                <Label Text="Name:"></Label>
+                <Label Text="{Binding SelectedUser.fullName}"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="6" >
+                <Label Text="Email:"></Label>
+                <Label Text="{Binding SelectedUser.email}"></Label>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding EmailCommand}" />
+                </Label.GestureRecognizers>
+            </StackLayout>
+            <Grid Grid.Row="7">
+                <BoxView   
+                                Margin="0,20"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                WidthRequest="40"
+                                HeightRequest="1"  
+                                Color="#5b5d68"></BoxView>
+            </Grid>
+            <!--<WebView x:Name="webview" Grid.Row="3" />-->            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="8" >
+                <Button Text="Email For Help" Command="{Binding EmailCommand}"></Button>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</views:ContentPageBase>

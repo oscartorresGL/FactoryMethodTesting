@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamStart.Views.MDPage"
+             xmlns:pages="clr-namespace:XamStart.Views"
+             xmlns:behaviors="clr-namespace:XamStart.Behaviors">
+  <MasterDetailPage.Master>
+    <pages:MasterDetailPageMaster x:Name="MasterPage" />
+  </MasterDetailPage.Master>
+  <MasterDetailPage.Behaviors>
+        <behaviors:MasterDetailNavigationBehavior></behaviors:MasterDetailNavigationBehavior>
+    </MasterDetailPage.Behaviors>
+</MasterDetailPage>

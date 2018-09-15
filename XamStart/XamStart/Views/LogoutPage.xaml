@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamStart.Views.LogoutPage"
+             xmlns:views="clr-namespace:XamStart.Views"
+             Title="Logout Page"
+             xmlns:Behaviors="clr-namespace:XamStart.Behaviors"
+              BindingContext="{Binding LogoutPageViewModel, Source={StaticResource Locator}}">    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Logout?"/>
+            <Button Text="Logout" Command="{Binding LogoutCommand}"/>
+            <Button Text="Cancel" Command="{Binding CancelCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</views:ContentPageBase>
