@@ -23,7 +23,9 @@ namespace XamStart.Services
 
             // pretend you just called an API and got this response
             var response = @"[{'firstName':'Fred','lastName':'Jones'},{'firstName':'Jessie','lastName':'Smith'}]";
+            // grab reference to the factory I use for handling responses
             HttpObjFactoryBase responseFactory = (HttpObjFactoryBase)ViewModelLocator.Container.Resolve<IResponseHttpObjFactory>();
+            // get an instance of the proper object from the factory
             var tempWidgets = responseFactory.GetWidgets(response);
             tempWidgets.ForEach(x => widgets.Add(x as Widget));
             return widgets;
