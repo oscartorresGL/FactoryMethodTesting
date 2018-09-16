@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamStart.iOS", "XamStart\Xa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamStart.UWP", "XamStart\XamStart.UWP\XamStart.UWP.csproj", "{EBA8D427-2ED5-45A1-B6BD-07F61BDD1526}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamStart", "XamStart\XamStart\XamStart.csproj", "{0E81F229-DAF8-4158-9574-CA43510B9CA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamStart", "XamStart\XamStart\XamStart.csproj", "{0E81F229-DAF8-4158-9574-CA43510B9CA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1DDC1A02-3143-41A6-9DB0-E477027E7832}"
 EndProject

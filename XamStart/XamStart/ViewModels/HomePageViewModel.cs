@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamStart.Models;
+using Newtonsoft.Json.Linq;
 
 namespace XamStart.ViewModels
 {
@@ -28,16 +29,17 @@ namespace XamStart.ViewModels
         }
         private void AddWidget()
         {
-            // lets pretend we have this widget we need to add to some machine. 
-            // Unfortunately the API that accepts the widget won't take a normal widget because it require a DateTime value
-            // So we had to create a similar model just to add the DateTime property, and we called it WidgetForAdding
-            var fakeWidgetForAdding = new WidgetForAdding(); // lets not worry about actually adding properties to it because they aren't used anyway
-            var newListofWidgets = widgetService.AddWidgetToMachine(fakeWidgetForAdding);
+            // lets pretend we added a new widget using a form on the home page
+            var newWidget = new Widget()
+            {
+                firstName = "Little",
+                lastName = "Abner"
+            };
+            // now lets add it to the machine (just pretend the machine is something important we have to add it to)
+            var newWidgetList = widgetService.AddWidgetToMachine(newWidget);
             Widgets.Clear();
-            newListofWidgets.ForEach(x => {
+            newWidgetList.ForEach(x => Widgets.Add(x));
 
-                Widgets.Add(x);
-            });
         }
         private void ShowWidgets(){
             Widgets.Clear();

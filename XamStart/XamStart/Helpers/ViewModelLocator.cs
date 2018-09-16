@@ -45,7 +45,11 @@ namespace XamStart.Helpers
             Container.RegisterType<ILoginService, LoginService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<INavigationService, NavigationService>(new ContainerControlledLifetimeManager());
             Container.RegisterType<IWidgetService, WidgetService>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<IResponseHttpObjFactory, ResponseHttpObjFactory>(new ContainerControlledLifetimeManager());
+            Container.RegisterType<ISendHttpObjFactory, SendHttpObjFactory>(new ContainerControlledLifetimeManager());
 
+            //non-singleton
+            Container.RegisterType<ICustomContractResolver, CustomContractResolver>();
 
             // Views
             Container.RegisterType<ILoginPage, LoginPage>();

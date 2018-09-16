@@ -1,7 +1,12 @@
 ﻿using System;
+using XamStart.Interfaces;
+
 namespace XamStart.Models
 {
-    public class Widget : BaseINotifyModel
+    /// <summary>
+    /// Widget used in most of my viewmodels
+    /// </summary>
+    public class Widget : BaseINotifyModel, IHttpObj
     {
 
         private string _firstName;

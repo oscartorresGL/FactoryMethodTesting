@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using XamStart.Factories;
+using XamStart.Helpers;
 using XamStart.Interfaces;
 using XamStart.Models;
+using Unity;
 
 namespace XamStart.Services
 {
@@ -9,42 +14,42 @@ namespace XamStart.Services
     {
         private List<Widget> widgets;
 
+        public WidgetService(){
+            widgets = new List<Widget>();
+        }
+
         public List<Widget> GetWidgets(){
-                widgets = new List<Widget>(){
-                    new Widget(){
-                        firstName = "Fred",
-                        lastName = "Jones"
-                    },
-                    new Widget() {
-                        firstName = "Jessie",
-                        lastName = "James"
-                    }
-                };
+
+
+            // pretend you just called an API and got this response
+            var response = @"[{'firstName':'Fred','lastName':'Jones'},{'firstName':'Jessie','lastName':'Smith'}]";
+            HttpObjFactoryBase responseFactory = (HttpObjFactoryBase)ViewModelLocator.Container.Resolve<IResponseHttpObjFactory>();
+            var tempWidgets = responseFactory.GetWidgets(response);
+            tempWidgets.ForEach(x => widgets.Add(x as Widget));
             return widgets;
         }
 
-        public List<Widget> AddWidgetToMachine(WidgetForAdding widgetForAdding){
+        public List<Widget> AddWidgetToMachine(Widget newWidget){
+            // first lets get an object ready to send to our pretend API.  This endpong needs
+            // a Widget with the added property "dateTime"
+            HttpObjFactoryBase sendFactory = (HttpObjFactoryBase)ViewModelLocator.Container.Resolve<ISendHttpObjFactory>();
+            IHttpObj widget = sendFactory.GetWidget(newWidget);
 
-            // pretent you sent off widgetForAdding (which is different than a plain widget) and you are getting
-            // back a 3rd type of widget you call WidgetForAddingReturn type.  It is different because it uses
-            // underscores in the property names.
+            // now that our object is ready, lets send it to our pretend API (we don't actually use the object above, just pretend we do).
+            // lets now pretend the next line is the response from the API.
+             var response = @"{'first_Name':'Izzy','last_Name':'Gonzales'}";
+            // Unfortunately for us,
+            // the response is in a different format than most of our other models.  The response has
+            // the property names with underscores! So we'll send it to our factories to get back a proper type we can use
+            HttpObjFactoryBase responseFactory = (HttpObjFactoryBase)ViewModelLocator.Container.Resolve<IResponseHttpObjFactory>();
+            var responseWidget = (Widget)responseFactory.GetWidget<string>(response);
 
-            // pretend this returnObject is what the API sent back
+
             if (widgets == null) widgets = new List<Widget>();
-            var returnObject = new WidgetForAddingReturn()
-            {
-                date_Time = DateTime.Now,
-                first_Name = "James",
-                last_Name = "Smith"
-            };
-            var convertedWidget = new Widget()
-            {
-                firstName = returnObject.first_Name,
-                lastName = returnObject.last_Name
-            };
-            if(widgets.Count < 3) 
-            widgets.Add(convertedWidget);
+            if (widgets.Count < 3) 
+                widgets.Add(responseWidget);
             return widgets;
         }
+
     }
 }
